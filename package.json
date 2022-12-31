@@ -1,0 +1,23 @@
+{
+  "name": "stock-market-prediction-web-app-using-machine-learning-and-sentiment-analysis-master",
+  "version": "1.0.0",
+  "description": "**Stock Market Prediction** Web App based on **Machine Learning** and **Sentiment Analysis** of Tweets **(API keys included in code)**. The front end of the Web App is based on **Flask** and **Wordpress**. The App forecasts stock prices of the next seven days for any given stock under **NASDAQ** or **NSE** as input by the user. Predictions are made using three algorithms: **ARIMA, LSTM, Linear Regression**. The Web App combines the predicted prices of the next seven days with the **sentiment analysis of tweets** to give recommendation whether the price is going to rise or fall",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tarunmadamanchi/Stock-Market-Prediction-Web-App-using-Machine-Learning-And-Sentiment-Analysis-master.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tarunmadamanchi/Stock-Market-Prediction-Web-App-using-Machine-Learning-And-Sentiment-Analysis-master/issues"
+  },
+  "homepage": "https://github.com/tarunmadamanchi/Stock-Market-Prediction-Web-App-using-Machine-Learning-And-Sentiment-Analysis-master#readme",
+  "dependencies": {
+    "firebase": "^9.15.0"
+  }
+}

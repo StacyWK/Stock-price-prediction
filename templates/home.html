@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SF</title>
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Favicons -->
+<link rel="shortcut icon" sizes="16x16" href="{{ url_for('static', filename='logo-2.png') }}"/>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='bootstrap.css') }}">
+
+<!-- Fonts -->
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='font-awesome.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='simple-line-icons.css') }}" media="screen" />
+<link rel="stylesheet" href="{{ url_for('static', filename='et-line-font.css') }}">
+
+<!-- MENU CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='menuzord.css') }}">
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<!-- Stylesheet -->
+<link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='css/styles_home.css') }}">
+
+<!-- Responsive -->
+<link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='responsive.css') }}">
+
+<!-- Animate.min -->
+<link rel="stylesheet" type="text/css"  href="{{ url_for('static', filename='animate.min.css') }}">
+     <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+  apiKey: "AIzaSyCgOvztm8QAS474CTPdUrRBFcjz5hQCRLY",
+  authDomain: "login-202e9.firebaseapp.com",
+  projectId: "login-202e9",
+  storageBucket: "login-202e9.appspot.com",
+  messagingSenderId: "1096469003",
+  appId: "1:1096469003:web:6e85760fdc307606f7d50e",
+  measurementId: "G-NR2W4MXP77"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+</script>
+   <script type="module">
+            import { getAuth, updateProfile , createUserWithEmailAndPassword ,sendEmailVerification  } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js";
+            const auth = getAuth();
+
+</script>
+
+<script type="module">
+    import { getAuth,onAuthStateChanged,sendEmailVerification} from "https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js";
+
+    const auth = getAuth();
+onAuthStateChanged(auth, (user) => {
+  if (user!= null && user.emailVerified== true) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    const uid = user.uid;
+    console.log(user.displayName)
+    console.log(uid,user.emailVerified)
+    // ...
+  } else {
+      if(user== null){
+      alert("Please login");
+          window.location.href = "/";
+
+      }
+      // if(user!= null && user.emailVerified== false){
+          console.log("trying");
+          alert("Please Verify your email")
+          window.location.href = "/";
+
+     }
+
+
+
+  }
+
+});
+</script>
+</head>
+
+<body>
+
+<!--preloader start-->
+
+<!--preloader end-->
+
+<!-- Nav Bar-->
+
+<nav class="navbar-fixed-top transparrent-bg">
+  <div class="container">
+    <div id="menuzord" class="menuzord red"> <a href="{{ url_for('home') }}" class="menuzord-brand"><img src="{{url_for('static', filename='logo-2.png')}}" />
+
+</a>
+      <ul class="menuzord-menu mp_menu">
+        <li class="active"><a href="{{ url_for('home') }}">HOME</a>
+        </li>
+        <li><a href="{{ url_for('dashboard') }}">STOCK SYMBOLS</a>
+        <li><a href="{{ url_for('index') }}">Predict The Future</a>
+        </li>
+        </li>
+        <li><a href="{{ url_for('about_us') }}">ABOUT US</a>
+        </li>
+        <!-- <li><a href="http://localhost/www/wordpress-5.6.2/wordpress/currency-converter/">CURRENCY CONVERTER</a>
+
+        </li> -->
+        <li><a href="{{ url_for('contact_us') }}">CONTACT US</a>
+        </li>
+         <li><a href="{{ url_for('signlog') }}" id="register_s">SIGN OUT</a>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<!-- END Nav Bar -->
+
+<!-- Header -->
+<div id="home" class="bg-inner low-back-gradient-inner">
+  <div class="text-con-inner low-back-up">
+    <div class="container">
+      <div style="padding-top: 40px" class="row">
+        <div class="lead col-lg-12 col-xm-12 text-center">
+          <h1><span class="top-heading-inner"></span> </h1>
+          <div class="list-o-i white">
+            <p class="white no-p"></p>
+            <div class="pagenation_links"><a href="index.html" class="yellow"><br></a><i> </i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ENd Header -->
+	<div class="banner_image">
+		<video
+			class="back-video" autoplay loop muted plays-inline >
+				<source src="{{url_for('static', filename='Video.mp4')}}" type="video/mp4">
+			</video>
+		<div class="banner_content">
+			<h1 style="color: #3333DC;">STOCK PRICE FORCASTING<br> <span>Get stock price predictions.</span></h1>
+		</div>
+	</div>
+
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container" style="margin-top: 5%;">
+	<div class="tradingview-widget-container__widget"></div>		
+	<div class="service" id="service">
+		<h1 class="title">Services</h1>
+		<p>Stock forecast is here for you to provide the best services needed for any kind of Investor in any type of Market. Some of our main services are displayed below!</p>
+		<div class="diff_services">
+			<div class="diff_services_item">
+				<img src="{{url_for('static', filename='live_chart.jpg')}}" alt="service_image">
+				<h3 class="sub_title">Live Market Update</h3>
+				<p>View any stocks prices and their graphs live on this website.</p>
+			</div>
+			<div class="diff_services_item">
+				<img src="{{url_for('static', filename='prediction.png')}}" alt="service_image">
+				<h3 class="sub_title">Predictions via ML models</h3>
+				<p>View the prediction of any company stock listed on Yahoo Finance done by meachine by a single click.</p>
+			</div>
+			<div class="diff_services_item">
+				<img src="{{url_for('static', filename='twitter.png')}}" alt="service_image">
+				<h3 class="sub_title">Tweets Sentiment Analysis</h3>
+				<p>View overall opinion of people regarding any company stock listed on Yahoo Finance.</p>
+			</div>
+		</div>
+	</div>
+
+
+
+<!-- End Lgin  -->
+
+<!-- Demo Heading -->
+
+<!--<div class="main-area top-download text-center ">-->
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+<!--      <div class="col-md-8">-->
+<!--        <p class="top-btn-text"> </p>-->
+<!--      </div>-->
+<!--      <div class="col-md-4 btn-ma"> </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!-- End Lgin  -->
+
+<!-- Demo Heading -->
+
+<div class="main-area top-download text-center ">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <p class="top-btn-text"> </p>
+      </div>
+      <div class="col-md-4 btn-ma"> </div>
+    </div>
+  </div>
+</div>
+
+<!-- END Demo Heading -->
+
+<!-- Footer Start  -->
+
+<div class="footer-section-area padding-top-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"><img  src="{{url_for('static', filename='logo-2.png')}}"></a>
+        <p class="white">Stock Forecaster was started with a common goal of serving the finance community with predictions in stocks prices and recommendations on whether to buy or sell or hold the stocks.</p>
+
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="title">
+          <h3>Contact Us</h3>
+        </div>
+        <div class="popular-post">
+         <ul>
+          <li><a href="#"> <i class="fa fa-map-marker fa-2x"></i>
+            "Jomo Kenyatta University Of Agriculture And Technology" Kenya, Juja Kwale, Rd, Juja </a></li>
+          <li><a href="#"><i class="fa fa-envelope-o fa-2x"></i>stacykaranja@gmail.com</a></li>
+          <li><a href="#"><i class="fa fa-phone fa-2x"></i>+254 701011111</a></li>
+        </ul>
+
+
+
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="title">
+          <h3>Quick Links</h3>
+        </div>
+        <div class="information">
+          <ul>
+            <li><a href="{{ url_for('home') }}"> <i class="fa fa-arrow-right"></i> HOME</a></li>
+            <li><a href="{{ url_for('dashboard') }}"> <i class="fa fa-arrow-right"></i> STOCK SYMBOLS</a></li>
+              <li><a href="{{ url_for('index') }}"> <i class="fa fa-arrow-right"></i> PREDICT THE FUTURE</a></li>
+            <li><a href="{{ url_for('about_us') }}"> <i class="fa fa-arrow-right"></i> ABOUT</a></li>            
+            <li><a href="{{ url_for('contact_us') }}"> <i class="fa fa-arrow-right"></i> CONTACT US</a></li>
+              <li><a href="{{ url_for('signlog') }}" id="register"> <i class="fa fa-arrow-right"></i> SIGN OUT</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="title">
+          <h3>LOCATION</h3>
+        </div>
+        <div class="our-service">         
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15956.379064105238!2d37.0117169!3d-1.0911971!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbefd8e40071d3352!2sJomo%20Kenyatta%20University%20Of%20Agriculture%20And%20Technology!5e0!3m2!1sen!2ske!4v1672199234311!5m2!1sen!2ske" width="300" height="300" frameborder="0" style="border:0;" allowfullscreen="false" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- End Footer -->
+
+<!-- Copyright Start  -->
+
+
+
+<!-- End Copyright -->
+
+<!--Contact Popup-->
+
+
+
+<!-- END Donate Popup-->
+
+<!-- Back to Top -->
+<a href="#" id="back-to-top" title="Back to top"><img src="{{url_for('static', filename='top-arrow.png')}}"></a>
+
+<!-- js file  -->
+<script type="text/javascript" src="{{url_for('static', filename='jquery.min.js')}}"></script>
+
+<!-- Bootstrap JS  -->
+<script type="text/javascript" src="{{url_for('static', filename='bootstrap.js')}}"></script>
+
+<!-- Menu JS  -->
+<script type="text/javascript" src="{{url_for('static', filename='menuzord.js')}}"></script>
+
+<!-- main js -->
+<script type="text/javascript" src="{{url_for('static', filename='main.js')}}"></script>
+<script type="module">
+import { getAuth, signOut, updateProfile , createUserWithEmailAndPassword ,sendEmailVerification  } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js";
+
+        const auth = getAuth();
+const register = () => {
+signOut(auth).then(() => {
+  // Sign-out successful.
+  console.log("success")
+  return false;
+}).catch((error) => {
+  // An error happened.
+});
+}
+        document.querySelector("#register").addEventListener("click", () => {
+            register();
+        });
+           document.querySelector("#register_s").addEventListener("click", () => {
+            register();
+        });
+</script>
+</body>
+</html>

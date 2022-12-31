@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+*$py.class
+static/
+.idea
+logs
+node_modules
